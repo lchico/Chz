@@ -15,6 +15,8 @@
     <!--script src="index.js"></script -->
     <!--script src="graphs.js"></script -->
     <link rel="stylesheet" type="text/css" href="graphs.css">
+	<script src="control.js"></script>
+
   </head>
 
   <body>
@@ -28,11 +30,11 @@
       </table>
     </div>
 
-    <h1> Testing CSS title </h1>
+    <h1> Testing CSS </h1><!--act1-->
 
 
       <div class="thermometer" >
-        <h3 class="title_monitor">Temperatura de Fermentacion </h3>
+        <h3 class="title_monitor">Temperatura de Fermentacion <!--act2--></h3>
           <svg width="300" height="300">
             <path d="M80 260 V35 C80 30, 102 0 120 35 V260 Z" stroke="black" fill="red"/>
             <circle cx="101" cy="260" r="30" stroke="black" stroke-width="0" fill="red" />
@@ -101,17 +103,33 @@
 
     <div class="contacts">
       <h3 class="title_monitor"> Valvulas y Motor </h3>
-      <svg width="300" height="300">
-            <circle id="evalv1" cx="10" cy="20" r="10"  />
-            <text  class="ev_txt" x="30" y="25"> Electrovalvula 1: OFF </text>
-            <circle id="evalv2" cx="10" cy="60" r="10"  />
-            <text  class="ev_txt" x="30" y="65"> Electrovalvula 2: OFF </text>
-            <circle id="motor" cx="10" cy="100" r="10"  />
-            <text  class="ev_txt" x="30" y="105"> Motor: OFF </text>
+      <svg width="300" height="300" >
+         <circle id="act1" cx="12" cy="20" r="10"  />
+         <text  class="contact_text" x="30" y="25">Electrovalvula 1:</text>
+         <text  id="act_text1" x="190" y="25"> OFF </text>
+
+         <circle id="act2" cx="12" cy="60" r="10"  />
+         <text  class="contact_text" x="30" y="65">Electrovalvula 2:</text>
+         <text  id="act_text2" x="190" y="65"> OFF </text>
+
+        <circle id="act3" cx="12" cy="100" r="10"  />
+	<text  class="contact_text" x="30" y="105">Motor:</text>
+        <text  id="act_text3" x="100" y="105">OFF </text>
       </svg>
     </div>
+	<br><br>
+
+<h2>ACTUADORES</h2>
+
+<form action="actuadores.cgi" method="GET">
+Some text in here.
+It can anything except another form.
+<input type="submit" name="cmd1" value="ON">
+</form>
+
 
 
 </body>
+
 
 </html>

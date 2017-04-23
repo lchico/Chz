@@ -26,18 +26,30 @@ a{
 *Contactos de Electrovalvulas
 */
 div.contacts{
-  position:absolute;
+  position:relative;
   right: 120%;
   font-size:60%;
 }
 
-#evalv1{
+#act1{
   stroke:black;
   stroke-width:2;
   fill:red;
 }
 
-.ev_txt{
+#act2{
+  stroke:black;
+  stroke-width:2;
+  fill:red;
+}
+#act3{
+  stroke:black;
+  stroke-width:2;
+  fill:green;
+}
+
+
+.contact_text,#act_text1,#act_text2,#act_text3{
     font-size:180%;
     fill:white;
 }
@@ -137,7 +149,7 @@ div.battery{
 
 /* Simulate charge or no using visibility:hidden/visible */
 #ray{
-  visibility: hidden;
+ // visibility: hidden;
   //visibility: visible;
   fill:yellow;
   stroke:red;
