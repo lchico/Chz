@@ -131,11 +131,11 @@ div.battery{
   position:absolute;
   left: 61%;
 }
-#batt00{ visibility: hidden; }
-#batt20{ visibility: hidden; }
-#batt40{ visibility: hidden; }
-#batt60{ visibility: hidden; }
-#batt80{ visibility: hidden; }
+#batt0{ visibility: hidden; }
+#batt1{ visibility: hidden; }
+#batt2{ visibility: hidden; }
+#batt3{ visibility: hidden; }
+#batt4{ visibility: hidden; }
 #small_ibatt{
     fill:red; /* white when have charge */
     stroke-width:5;
@@ -154,7 +154,7 @@ div.battery{
   fill:yellow;
   stroke:red;
   width: 100%;
-  height: auto;
+
 }
 #dig_charge{
   position: absolute;

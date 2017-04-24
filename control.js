@@ -22,6 +22,7 @@ function loop() {
 	}else {
 		contacts_update("OFF", n%4)
 	}
+	battery_state(n%6);
 
 }
 
@@ -177,3 +178,63 @@ function contacts_update(state,actuador){
   		document.getElementById("act_text"+actuador).innerHTML = "OFF";
 	}
 }
+
+
+
+function battery_state(level){
+	switch(level){
+case 1:
+	document.getElementById("batt0").style.visibility='visible'
+	document.getElementById("batt1").style.visibility='hidden'
+	document.getElementById("batt2").style.visibility='hidden'
+	document.getElementById("batt3").style.visibility='hidden'
+	document.getElementById("batt4").style.visibility='hidden'
+	document.getElementById("ray").style.visibility='hidden'
+	break;
+case 2:
+	document.getElementById("batt0").style.visibility='visible'
+	document.getElementById("batt1").style.visibility='visible'
+	document.getElementById("batt2").style.visibility='hidden'
+	document.getElementById("batt3").style.visibility='hidden'
+	document.getElementById("batt4").style.visibility='hidden'
+	document.getElementById("ray").style.visibility='hidden'
+	break;
+case 3:
+	document.getElementById("batt0").style.visibility='visible'
+	document.getElementById("batt1").style.visibility='visible'
+	document.getElementById("batt2").style.visibility='visible'
+	document.getElementById("batt3").style.visibility='hidden'
+	document.getElementById("batt4").style.visibility='hidden'
+	document.getElementById("ray").style.visibility='hidden'
+	break;
+case 4:
+	document.getElementById("batt0").style.visibility='visible'
+	document.getElementById("batt1").style.visibility='visible'
+	document.getElementById("batt2").style.visibility='visible'
+	document.getElementById("batt3").style.visibility='visible'
+	document.getElementById("batt4").style.visibility='hidden'
+	document.getElementById("ray").style.visibility='hidden'
+	break;
+case 5:
+	document.getElementById("batt0").style.visibility='visible'
+	document.getElementById("batt1").style.visibility='visible'
+	document.getElementById("batt2").style.visibility='visible'
+	document.getElementById("batt3").style.visibility='visible'
+	document.getElementById("batt4").style.visibility='visible'
+	document.getElementById("ray").style.visibility='hidden'
+	break;
+case 5:
+	document.getElementById("ray").style.visibility='visible'
+	break;
+default:
+	document.getElementById("batt0").style.visibility='hidden'
+	document.getElementById("batt1").style.visibility='hidden'
+	document.getElementById("batt2").style.visibility='hidden'
+	document.getElementById("batt3").style.visibility='hidden'
+	document.getElementById("batt4").style.visibility='hidden'
+	document.getElementById("ray").style.visibility='hidden'
+	break;
+	}
+}
+
+

@@ -73,21 +73,24 @@
             <!-- Last bar => 20 % or less -->
             <!-- Need put TAG -->
             <text id="dig_charge" x="100" y="125">100%</text>
-            <rect id="batt00" x="20" y="190" width="60" height="20" style="fill:gray ;stroke-width:5;stroke:gray" />
+            <rect id="batt0" x="20" y="190" width="60" height="20" style="fill:gray ;stroke-width:5;stroke:gray" />
             <!-- Second last bar => 40 % or less until 20 % -->
-            <rect id="batt20" x="20" y="160" width="60" height="20" style="fill:gray ;stroke-width:5;stroke:gray" />
+            <rect id="batt1" x="20" y="160" width="60" height="20" style="fill:gray ;stroke-width:5;stroke:gray" />
             <!-- Medle bar => betewen 40 and 60% -->
-            <rect id="batt40" x="20" y="130" width="60" height="20" style="fill:gray ;stroke-width:5;stroke:gray" />
+            <rect id="batt2" x="20" y="130" width="60" height="20" style="fill:gray ;stroke-width:5;stroke:gray" />
             <!-- Medle top => betewen 60 and 80% -->
-            <rect id="batt60" x="20" y="100" width="60" height="20" style="fill:gray ;stroke-width:5;stroke:gray" />
+            <rect id="batt3" x="20" y="100" width="60" height="20" style="fill:gray ;stroke-width:5;stroke:gray" />
             <!-- More than 80 % -->
-            <rect id="batt80" x="20" y="70" width="60" height="20" style="fill:gray ;stroke-width:5;stroke:gray" />
+            <rect id="batt4" x="20" y="70" width="60" height="20" style="fill:gray ;stroke-width:5;stroke:gray" />
              <!-- line x1="40" y1="20" x1="10" y1="50" style="stroke:rgb(255,0,0);stroke-width:2" -->
-             <svg id="ray" viewBox="70 -90 700 700">
-               <path  d="M200 50 L150 105 L180 105 L80 180 L130 120 L95 120 Z"></path>
-             </svg>
-          </g>
+  <svg id="ray" viewBox="25 -180 700 700">
+   <path  d="M200 50 L150 105 L180 105 L80 180 L130 120 L95 120 Z"></path>
+  </svg>
+            </g>
         </svg>
+
+   
+
     <div>
 
     <div class="gprs">
