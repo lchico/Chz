@@ -113,7 +113,6 @@ div.thermometer{
   fill:black;
 }
 .arrow_tmp{
-  top:300;  /* Change this value to put the arrow correct place */
   stroke:black;
   fill:red;
 

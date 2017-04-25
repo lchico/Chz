@@ -16,7 +16,7 @@ function loop() {
 	setTimeout("loop()",1000);
 	var d = new Date();
 	var n = d.getSeconds(); 
-	signal_ctrl(n%5);
+	signal_ctrl(n%6);
 	if ( (n % 2) == 1 ) {
 		contacts_update("ON", n%4)
 	}else {
@@ -183,6 +183,14 @@ function contacts_update(state,actuador){
 
 function battery_state(level){
 	switch(level){
+case 0:
+	document.getElementById("batt0").style.visibility='hidden'
+	document.getElementById("batt1").style.visibility='hidden'
+	document.getElementById("batt2").style.visibility='hidden'
+	document.getElementById("batt3").style.visibility='hidden'
+	document.getElementById("batt4").style.visibility='hidden'
+	document.getElementById("ray").style.visibility='visible'
+	break;
 case 1:
 	document.getElementById("batt0").style.visibility='visible'
 	document.getElementById("batt1").style.visibility='hidden'
@@ -223,9 +231,6 @@ case 5:
 	document.getElementById("batt4").style.visibility='visible'
 	document.getElementById("ray").style.visibility='hidden'
 	break;
-case 5:
-	document.getElementById("ray").style.visibility='visible'
-	break;
 default:
 	document.getElementById("batt0").style.visibility='hidden'
 	document.getElementById("batt1").style.visibility='hidden'
@@ -237,4 +242,11 @@ default:
 	}
 }
 
+function tem_arrow(temp){
+  var transform = _element.transform.baseVal.getItem(0);   
+  var mat = transform.matrix;   
+  mat = mat.translate( _x, _y );  
+  transform.setMatrix( mat );
+
+}
 
