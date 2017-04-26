@@ -23,6 +23,7 @@ function loop() {
 		contacts_update("OFF", n%4)
 	}
 	battery_state(n%6);
+	temp_arrow(n%20,18,16);
 
 }
 
@@ -242,11 +243,34 @@ default:
 	}
 }
 
-function tem_arrow(temp){
-  var transform = _element.transform.baseVal.getItem(0);   
-  var mat = transform.matrix;   
-  mat = mat.translate( _x, _y );  
-  transform.setMatrix( mat );
-
+function temp_arrow(temp,max,min){
+  var domElement = document.getElementById('arrow_temp');   
+	if(domElement){	
+		/* graphics details 
+		max thermometer pixel = 30
+		max temp pixel = 90
+		min temp pixel = 161
+		(max - min) pixel = -71	
+		(max + min ) pixel = 125.5
+		min thermometer pixel = 200
+		center temperature pixel = 125.5
+		*/	
+		var MAX_TEMP_PIXEL = 30;
+		var MIN_TEMP_PIXEL = 220;
+		m = -71  / (max-min) ;
+		b = 125.5 - m*(max+min)/2;
+		mv_arrow = b  + m*temp  ;
+		
+		if ( mv_arrow < MAX_TEMP_PIXEL ){
+  			var move = 'translate(' + 130 + ',' + MAX_TEMP_PIXEL + ' )';  
+		}else if ( mv_arrow > MIN_TEMP_PIXEL ){
+  			var move = 'translate(' + 130 + ',' + MIN_TEMP_PIXEL + ' )';  
+		} else {
+  			var move = 'translate(' + 130 + ',' + mv_arrow + ' )';  
+		}
+		domElement.setAttribute('transform', move);
+            	document.getElementById("tmp_value").innerHTML = temp;
+	}
+	
 }
 

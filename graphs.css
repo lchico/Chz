@@ -112,7 +112,7 @@ div.thermometer{
   font-size:180%;
   fill:black;
 }
-.arrow_tmp{
+#arrow_temp{
   stroke:black;
   fill:red;
 
