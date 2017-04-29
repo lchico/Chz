@@ -14,16 +14,11 @@ function loop() {
 	if( !data_received )
 		makeRequest("ajax.shtml");
 	setTimeout("loop()",1000);
-	var d = new Date();
-	var n = d.getSeconds(); 
-	signal_ctrl(n%6);
-	if ( (n % 2) == 1 ) {
-		contacts_update("ON", n%4)
-	}else {
-		contacts_update("OFF", n%4)
-	}
-	battery_state(n%6);
-	temp_arrow(n%20,18,16);
+	//var d = new Date();
+	//var n = d.getSeconds(); 
+	//signal_ctrl(n%6);
+	//battery_state(n%6);
+	//temp_arrow(n%20,18,16);
 
 }
 
@@ -51,8 +46,8 @@ function alertContents(http_request){
 
   if (http_request.readyState == 4){
     if (http_request.status == 200){
-//      parse_vars(http_request.responseText);
-      //document.getElementById("sensor1").innerHTML = http_request.responseText;
+      update_values(http_request.responseText);
+     //document.getElementById("sensor1").innerHTML = http_request.responseText;
       data_received = 0;
     }
     else{
@@ -63,32 +58,30 @@ function alertContents(http_request){
 }
 
 
-function parse_vars( data ){
+function update_values( data ){
+ 	var parsed = data.split('\n')
+	for ( i = 0 ; i < parsed.length-1 ; i++) { 
+		var argument=parsed[i].replace(/[#<!-]/g,"");
+		var tag=argument.split('>');
+		switch(tag[0]){
+			case "act0": case "act1": case "act2": case "act3" :	
+				contacts_update(tag[1],tag[0]);
+				break;
+			case "sen0": // Temperature value, complit max and min
+				temp_arrow(tag[1],15,17);
+				break;
+			case "sen1": // battery
+				battery_state(tag[1]);
+				break;
+			case "sen2": // signal cel
+				signal_modem(tag[1]);
+				break;
+			default :
+				//console.log(tag[0]);
+				break;
+	  }
 
-  var parsed = data.split('\n');
-
-  document.getElementById("state1").innerHTML = parsed[0];
-
-  if ( parsed[0] == "<!--#act1-->ENCENDIDO" ) {
-    document.getElementById("actuador1").value = "DETENER";
-    document.getElementById("state1").className = "actuadorVerde";
-  }
-  else {
-    document.getElementById("actuador1").value = "INICIAR";
-    document.getElementById("state1").className = "actuadorRojo";
-  }
-
-  document.getElementById("state2").innerHTML = parsed[1];
-
-  if ( parsed[1] == "<!--#act2-->ENCENDIDO" ) {
-    document.getElementById("actuador2").value = "DETENER";
-    document.getElementById("state2").className = "actuadorVerde";
-  }
-  else {
-    document.getElementById("actuador2").value = "INICIAR";
-    document.getElementById("state2").className = "actuadorRojo";
-  }
-
+	}
 }
 
 function strCompare(str1,str2) {
@@ -98,16 +91,6 @@ function strCompare(str1,str2) {
 }
 
 
-
-function changeBottonText(elem)
-{
-   /* if (elem.value == "INICIAR")
-	elem.value = "DETENER";
-
-    else if (elem.value == "DETENER")
-	elem.value = "INICIAR";
-*/
-}
 
 function testAJAX()
 {
@@ -133,27 +116,27 @@ function changebuttonClasses(elem) {
   }
 }
 
-function signal_ctrl(signal){
+function signal_modem(signal){
 	switch(signal){
-case 1:
+case "1":
 	document.getElementById("sig1_gprs").style.visibility='visible'
 	document.getElementById("sig2_gprs").style.visibility='hidden'
 	document.getElementById("sig3_gprs").style.visibility='hidden'
 	document.getElementById("sig4_gprs").style.visibility='hidden'
 	break;
-case 2:
+case "2":
 	document.getElementById("sig1_gprs").style.visibility='visible'
 	document.getElementById("sig2_gprs").style.visibility='visible'
 	document.getElementById("sig3_gprs").style.visibility='hidden'
 	document.getElementById("sig4_gprs").style.visibility='hidden'
 	break;
-case 3:
+case "3":
 	document.getElementById("sig1_gprs").style.visibility='visible'
 	document.getElementById("sig2_gprs").style.visibility='visible'
 	document.getElementById("sig3_gprs").style.visibility='visible'
 	document.getElementById("sig4_gprs").style.visibility='hidden'
 	break;
-case 4:
+case "4":
 	document.getElementById("sig1_gprs").style.visibility='visible'
 	document.getElementById("sig2_gprs").style.visibility='visible'
 	document.getElementById("sig3_gprs").style.visibility='visible'
@@ -172,11 +155,11 @@ default:
 
 function contacts_update(state,actuador){
 	if ( state == "ON" ) {
-		document.getElementById("act"+actuador).style.fill='green'
-  		document.getElementById("act_text"+actuador).innerHTML = "ON";
+		document.getElementById(actuador).style.fill='green'
+  		document.getElementById(actuador+"_text").innerHTML = "ON";
 	}else {
-		document.getElementById("act"+actuador).style.fill='red'
-  		document.getElementById("act_text"+actuador).innerHTML = "OFF";
+		document.getElementById(actuador).style.fill='red'
+  		document.getElementById(actuador+"_text").innerHTML = "OFF";
 	}
 }
 
@@ -184,7 +167,7 @@ function contacts_update(state,actuador){
 
 function battery_state(level){
 	switch(level){
-case 0:
+case "0":
 	document.getElementById("batt0").style.visibility='hidden'
 	document.getElementById("batt1").style.visibility='hidden'
 	document.getElementById("batt2").style.visibility='hidden'
@@ -192,7 +175,7 @@ case 0:
 	document.getElementById("batt4").style.visibility='hidden'
 	document.getElementById("ray").style.visibility='visible'
 	break;
-case 1:
+case "1":
 	document.getElementById("batt0").style.visibility='visible'
 	document.getElementById("batt1").style.visibility='hidden'
 	document.getElementById("batt2").style.visibility='hidden'
@@ -200,7 +183,7 @@ case 1:
 	document.getElementById("batt4").style.visibility='hidden'
 	document.getElementById("ray").style.visibility='hidden'
 	break;
-case 2:
+case "2":
 	document.getElementById("batt0").style.visibility='visible'
 	document.getElementById("batt1").style.visibility='visible'
 	document.getElementById("batt2").style.visibility='hidden'
@@ -208,7 +191,7 @@ case 2:
 	document.getElementById("batt4").style.visibility='hidden'
 	document.getElementById("ray").style.visibility='hidden'
 	break;
-case 3:
+case "3":
 	document.getElementById("batt0").style.visibility='visible'
 	document.getElementById("batt1").style.visibility='visible'
 	document.getElementById("batt2").style.visibility='visible'
@@ -216,7 +199,7 @@ case 3:
 	document.getElementById("batt4").style.visibility='hidden'
 	document.getElementById("ray").style.visibility='hidden'
 	break;
-case 4:
+case "4":
 	document.getElementById("batt0").style.visibility='visible'
 	document.getElementById("batt1").style.visibility='visible'
 	document.getElementById("batt2").style.visibility='visible'
@@ -224,7 +207,7 @@ case 4:
 	document.getElementById("batt4").style.visibility='hidden'
 	document.getElementById("ray").style.visibility='hidden'
 	break;
-case 5:
+case "5":
 	document.getElementById("batt0").style.visibility='visible'
 	document.getElementById("batt1").style.visibility='visible'
 	document.getElementById("batt2").style.visibility='visible'
@@ -243,7 +226,7 @@ default:
 	}
 }
 
-function temp_arrow(temp,max,min){
+function temp_arrow(temp){
   var domElement = document.getElementById('arrow_temp');   
 	if(domElement){	
 		/* graphics details 
@@ -257,6 +240,9 @@ function temp_arrow(temp,max,min){
 		*/	
 		var MAX_TEMP_PIXEL = 30;
 		var MIN_TEMP_PIXEL = 220;
+
+            	var max=document.getElementById("therm_max").innerHTML;
+            	var min=document.getElementById("therm_min").innerHTML;
 		m = -71  / (max-min) ;
 		b = 125.5 - m*(max+min)/2;
 		mv_arrow = b  + m*temp  ;

@@ -7,7 +7,7 @@ table{
   font-style: italic;
   font-size:120%;
   color: black;
-  border-spacing: 90 20px;
+  border-spacing: 90px 20px;
   border-collapse: separate;
   background: black;
 }
@@ -31,6 +31,12 @@ div.contacts{
   font-size:60%;
 }
 
+#act0{
+  stroke:black;
+  stroke-width:2;
+  fill:red;
+}
+
 #act1{
   stroke:black;
   stroke-width:2;
@@ -49,7 +55,7 @@ div.contacts{
 }
 
 
-.contact_text,#act_text1,#act_text2,#act_text3{
+.contact_text,#act0_text,#act1_text,#act2_text,#act3_text{
     font-size:180%;
     fill:white;
 }
@@ -148,8 +154,6 @@ div.battery{
 
 /* Simulate charge or no using visibility:hidden/visible */
 #ray{
- // visibility: hidden;
-  //visibility: visible;
   fill:yellow;
   stroke:red;
   width: 100%;

@@ -3,20 +3,12 @@
 <html>
   <head>
     <title>Panel de Control</title>
-
     <meta name="description" content="Monitoreo del proceso de Fermentacion">
     <meta name="author" content="Luis Enrique Chico Capistrano">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!-- link rel="stylesheet" href="framework.css" -->
-    <!--link rel="stylesheet" href="index.css" -->
-    <!--script src="framework.js"></script -->
-    <!--script src="index.js"></script -->
-    <!--script src="graphs.js"></script -->
     <link rel="stylesheet" type="text/css" href="graphs.css">
 	<script src="control.js"></script>
-
   </head>
 
   <body>
@@ -45,10 +37,12 @@
             <text id="set_alarm" x="0" y="12"> Set </text>
             <text id="set_alarm" x="10" y="30">Alarm:</text>
 
-            <text id="therm_min" x="0" y="105"> max: 18</text>
+            <text class="contact_text" x="0" y="103"> max:</text>
+            <text id="therm_max" x="45" y="105">18</text>
             <line id="line_max" x1="120" y1="100" x2="135" y2="100" />
 
-            <text id="therm_max" x="0" y="175"> min: 16</text>
+            <text class="contact_text" x="0" y="173">min: </text>
+            <text id="therm_min" x="45" y="175">16</text>
             <line id="line_max" x1="120" y1="171" x2="135" y2="171" />
             <g id="arrow_temp" >
               <path d="M2 10 L25 0 V20"></path>
@@ -107,17 +101,22 @@
     <div class="contacts">
       <h3 class="title_monitor"> Valvulas y Motor </h3>
       <svg width="300" height="300" >
-         <circle id="act1" cx="12" cy="20" r="10"  />
-         <text  class="contact_text" x="30" y="25">Electrovalvula 1:</text>
-         <text  id="act_text1" x="190" y="25"> OFF </text>
+        <circle id="act0" cx="12" cy="20" r="10"  />
+        <text  class="contact_text" x="30" y="25">Electrovalvula 0:</text>
+        <text  id="act0_text" x="190" y="25"> OFF </text>
 
-         <circle id="act2" cx="12" cy="60" r="10"  />
-         <text  class="contact_text" x="30" y="65">Electrovalvula 2:</text>
-         <text  id="act_text2" x="190" y="65"> OFF </text>
+        <circle id="act1" cx="12" cy="60" r="10"  />
+        <text  class="contact_text" x="30" y="65">Electrovalvula 1:</text>
+        <text  id="act1_text" x="190" y="65"> OFF </text>
 
-        <circle id="act3" cx="12" cy="100" r="10"  />
-	<text  class="contact_text" x="30" y="105">Motor:</text>
-        <text  id="act_text3" x="100" y="105">OFF </text>
+        <circle id="act2" cx="12" cy="100" r="10"  />
+	<text  class="contact_text" x="30" y="105">Electrovalvula 2:</text>
+        <text  id="act2_text" x="190" y="105">OFF </text>
+
+	<circle id="act3" cx="12" cy="140" r="10"  />
+        <text  class="contact_text" x="30" y="145">Motor:</text>
+        <text  id="act3_text" x="100" y="145"> OFF </text>
+
       </svg>
     </div>
 	<br><br>
