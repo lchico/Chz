@@ -4,10 +4,8 @@ body{
 }
 
 table{
-  font-style: italic;
-  font-size:120%;
-  color: black;
-  border-spacing: 90px 20px;
+  border-spacing: auto auto;
+  width: 100%;    
   border-collapse: separate;
   background: black;
 }
@@ -15,48 +13,33 @@ table{
 h1{
   position:relative;
   text-align: center;
-  color:black;
 }
 
 a{
   color:white;
 }
 
+svg{
+ display: block;
+ margin: auto;
+}
+
 /**
 *Contactos de Electrovalvulas
 */
 div.contacts{
-  position:relative;
-  right: 120%;
-  font-size:60%;
+  position:absolute;
+  right: 50%;
+  left:10%;
+  bottom: 10%;
 }
 
-#act0{
+#act0,#act1,#act2,#act3{
   stroke:black;
   stroke-width:2;
-  fill:red;
 }
-
-#act1{
-  stroke:black;
-  stroke-width:2;
-  fill:red;
-}
-
-#act2{
-  stroke:black;
-  stroke-width:2;
-  fill:red;
-}
-#act3{
-  stroke:black;
-  stroke-width:2;
-  fill:green;
-}
-
 
 .contact_text,#act0_text,#act1_text,#act2_text,#act3_text{
-    font-size:180%;
     fill:white;
 }
 
@@ -66,7 +49,9 @@ div.contacts{
 
 div.gprs{
   position:absolute;
-  right:20%;
+  right: 10%;
+  left:50%;
+  top: 5%;
 }
 
 #floor_gprs{
@@ -74,17 +59,11 @@ div.gprs{
    stroke-width:2;
  }
 
-.title_monitor{
+h3{
+  text-align: center;
   font-size:20px;
   fill:blue;
 }
-
-#sig1_gprs{visibility: visible; }
-#sig2_gprs{visibility: visible; }
-#sig3_gprs{visibility: visible; }
-#sig4_gprs{visibility: visible; }
-
-
 
 /**
 * thermometer configuration
@@ -92,16 +71,17 @@ div.gprs{
 div.thermometer{
   position:absolute;
   right: 50%;
-  font-size:60%;
+  left:10%;
+  top: 5%;
+  font-size:21px;
 }
 
 #therm_rang_OK{
   fill:#7FFF00;
 }
 
-#set_alarm{
-  font-size:180%;
-  fill:red;
+#set_alarm,#alarm{
+  fill:black;
 }
 
 #line_max{
@@ -110,14 +90,10 @@ div.thermometer{
  }
 
 #symbC{
-  font-size:42px;
+  font-size:22px;
   fill:black;
 }
 
-#therm_min,#therm_max{
-  font-size:180%;
-  fill:black;
-}
 #arrow_temp{
   stroke:black;
   fill:red;
@@ -134,18 +110,17 @@ div.thermometer{
 **/
 div.battery{
   position:absolute;
-  left: 61%;
+  right: 10%;
+  left:50%;
+  bottom: 10%;
 }
-#batt0{ visibility: hidden; }
-#batt1{ visibility: hidden; }
-#batt2{ visibility: hidden; }
-#batt3{ visibility: hidden; }
-#batt4{ visibility: hidden; }
+
 #small_ibatt{
     fill:red; /* white when have charge */
     stroke-width:5;
     stroke:white;
  }
+
 #big_batt{
   fill:white; /* white when have charge */
   stroke-width:5;
@@ -161,6 +136,5 @@ div.battery{
 }
 #dig_charge{
   position: absolute;
-  top:280px;
   fill:gray;
 }
