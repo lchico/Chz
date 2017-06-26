@@ -13,12 +13,13 @@ alert("hola");
 function loop() {
 	if( !data_received )
 		makeRequest("ajax.shtml");
-	setTimeout("loop()",1000);
+	setTimeout("loop()",2000);
 	//var d = new Date();
 	//var n = d.getSeconds(); 
+        //n=n.replace(".",",");
 	//signal_ctrl(n%6);
 	//battery_state(n%6);
-	//temp_arrow(n%20,18,16);
+        //temp_arrow(n,18,16);
 
 }
 
@@ -182,7 +183,7 @@ case "0":
 	document.getElementById("batt2").style.visibility='hidden'
 	document.getElementById("batt3").style.visibility='hidden'
 	document.getElementById("batt4").style.visibility='hidden'
-	document.getElementById("ray").style.visibility='visible'
+	document.getElementById("ray").style.visibility='hidden'
 	break;
 case "1":
 	document.getElementById("batt0").style.visibility='visible'
@@ -222,7 +223,7 @@ case "5":
 	document.getElementById("batt2").style.visibility='visible'
 	document.getElementById("batt3").style.visibility='visible'
 	document.getElementById("batt4").style.visibility='visible'
-	document.getElementById("ray").style.visibility='hidden'
+	document.getElementById("ray").style.visibility='visible'
 	break;
 default:
 	document.getElementById("batt0").style.visibility='hidden'
@@ -233,6 +234,8 @@ default:
 	document.getElementById("ray").style.visibility='hidden'
 	break;
 	}
+
+document.getElementById("dig_charge").innerHTML = level*20+" %";
 }
 
 function temp_arrow(temp){
@@ -253,7 +256,7 @@ function temp_arrow(temp){
             	var max=document.getElementById("therm_max").innerHTML;
             	var min=document.getElementById("therm_min").innerHTML;
 		m = -71  / (max-min) ;
-		b = 125.5 - m*(max+min)/2;
+		b = 125.5 - m*(max*1+min*1)/2;
 		mv_arrow = b  + m*temp  ;
 		
 		if ( mv_arrow < MAX_TEMP_PIXEL ){
